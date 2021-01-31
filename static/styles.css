@@ -3,6 +3,9 @@ body{
     background-color: #bbdefb;
     font-family: proxima_nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+h1{
+    font-size: 36px;
+}
 #albumcover{
     display: block;
     margin-left: auto;
@@ -23,4 +26,8 @@ body{
 
 #name{
     color: gray;
+}
+
+#recc{
+    font-size: 36px;
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href={{ url_for("static", filename="styles.css") }} />
+    </head>
+    <body>
+        <div id ="recc">
+        <img id="logo" src="https://assets.stickpng.com/images/59b5bb466dbe923c39853e00.png" />
+        <h1>Some similar songs you might like!</h1>
+            {% for key, values in recc_songs.items() %}
+                <a href = {{values}}  target="_blank" >
+                    {{key}}
+                </a>
+                <br>
+            {% endfor %}
+        </div>
+    </body>
+</html>

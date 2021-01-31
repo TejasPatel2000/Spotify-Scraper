@@ -6,5 +6,6 @@ a. What are at least 3 technical issues you encountered with your project? How d
     The next issue I ran into this was with deploying any changes I made. Using "git push heroku master" was not working and was throwing various errors. After more research, I found a command on stackOverflow "git push heroku HEAD:master"
     that resolved this issue for me.
     2. Ran into issue authorizing spotipy while deploying to heroku.
+    3. Some songs do not have previews for their songs
 b. What are known problems, if any, with your project? 
 c. What would you do to improve your project in the future? 
