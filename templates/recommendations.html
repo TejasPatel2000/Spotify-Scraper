@@ -5,14 +5,18 @@
     </head>
     <body>
         <div id ="recc">
-        <img id="logo" src="https://assets.stickpng.com/images/59b5bb466dbe923c39853e00.png" />
-        <h1>Some similar songs you might like!</h1>
-            {% for key, values in recc_songs.items() %}
-                <a href = {{values}}  target="_blank" >
-                    {{key}}
-                </a>
-                <br>
-            {% endfor %}
+            <img id="logo" src="https://assets.stickpng.com/images/59b5bb466dbe923c39853e00.png" />
+            <h1>Some similar songs you might like!</h1>
+                {% for key, values in recc_songs.items() %}
+                    <a href = {{values}}  target="_blank" >
+                        {{key}}
+                    </a>
+                    <br>
+                {% endfor %}
+            <a href = {{url_for("hello_world")}} >
+                <h3>Look at another top song by one of Tejas' favorite artists!</h3>
+            </a>
+            
         </div>
     </body>
 </html>
