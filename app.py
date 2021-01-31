@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
+    fav_artists = ["J Cole", "Lil Wayne", "Drake"]
     return render_template(
         'index.html', 
         )
