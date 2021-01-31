@@ -22,16 +22,18 @@ def hello_world():
     track_name = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["name"]
     prev_url = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["preview_url"]
     img_url = sp.artist_top_tracks(artist,"US")["tracks"][random_number]["album"]["images"][0]["url"]
-    print(name)
-    print(track_name)
-    print(prev_url)
-    print(img_url)
+    # print(name)
+    # print(track_name)
+    # print(prev_url)
+    # print(img_url)
+    track_href=sp.artist_top_tracks(artist, "US")['tracks'][random_number]['external_urls']['spotify']
     return render_template(
         'index.html', 
         name = name,
         track = track_name,
         prev_url = prev_url,
         image=img_url,
+        track_href = track_href,
         )
 
     
