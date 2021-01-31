@@ -4,10 +4,15 @@
         <link rel="stylesheet" href={{ url_for("static", filename="styles.css") }} />
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <h2>{{name}}</h2>
-        <h3>{{track}}</h3>
-        <h3>{{prev_url}}</h3>
-        <img src={{image}} />
+        <img id="logo" src="https://assets.stickpng.com/images/59b5bb466dbe923c39853e00.png" />
+        <div class="content">
+            <img id="albumcover" src={{image}} />
+            <h1>{{track}}</h1>
+            <h3>{{name}}</h3>
+            <audio controls>
+                <source src={{prev_url}} type="audio/mpeg">
+                <source src={{prev_url}} type="audio/ogg">
+            </audio>
+        </div>
     </body>
 </html>
