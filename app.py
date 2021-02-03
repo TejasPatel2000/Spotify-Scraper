@@ -3,7 +3,9 @@ import random
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from dotenv import load_dotenv, find_dotenv
 
+load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 
