@@ -6,5 +6,5 @@ Project 1
 ###### 3. Some songs do not have previews for their songs
 ###### 4. Initializing git
 ## b. What are known problems, if any, with your project? 
-###     Sometimes the Spotify Logo I put in the top left header does not load for some reason. Most of the time it works though, so I am still working on getting that functionality
+###### Sometimes the Spotify Logo I put in the top left header does not load for some reason. Most of the time it works though, so I am still working on getting that functionality
 ## c. What would you do to improve your project in the future? 

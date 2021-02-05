@@ -24,12 +24,12 @@ def hello_world():
     random_number = random.randint(0,2)
     artist = fav_artists_id[random_number]
     name = sp.artist(artist)['name']
-    
+
     random_number = random.randint(0,9)
     track_name = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["name"]
     track_href=sp.artist_top_tracks(artist, "US")['tracks'][random_number]['external_urls']['spotify']
     track_id = sp.artist_top_tracks(artist, "US")['tracks'][random_number]['id']
-    
+    print( sp.artist(artist))
     prev_url = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["preview_url"]
     img_url = sp.artist_top_tracks(artist,"US")["tracks"][random_number]["album"]["images"][0]["url"]
     
