@@ -29,7 +29,9 @@ def hello_world():
     track_name = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["name"]
     track_href=sp.artist_top_tracks(artist, "US")['tracks'][random_number]['external_urls']['spotify']
     track_id = sp.artist_top_tracks(artist, "US")['tracks'][random_number]['id']
-    print( sp.artist(artist))
+    
+    artist_pic = sp.artist(artist)["images"][2]['url']
+    
     prev_url = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["preview_url"]
     img_url = sp.artist_top_tracks(artist,"US")["tracks"][random_number]["album"]["images"][0]["url"]
     
@@ -55,6 +57,7 @@ def hello_world():
         prev_url = prev_url,
         image=img_url,
         track_href = track_href,
+        artist_pic = artist_pic
         )
 
     

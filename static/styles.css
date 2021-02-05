@@ -20,8 +20,8 @@ h1{
     display: block;
     margin-left: 0px;
     margin-right: auto;
-    max-height:35%;
-    max-width: 35%;
+    width: 20%;
+    height: 20%;
 }
 
 #name{
@@ -30,4 +30,13 @@ h1{
 
 #recc{
     font-size: 36px;
+}
+
+#pro_pic{
+    
+    border-radius: 75%;
+    width: 5em;
+    height: 5em;
+    vertical-align: middle;
+    
 }
