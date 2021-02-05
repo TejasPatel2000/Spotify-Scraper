@@ -1,5 +1,4 @@
 body{
-    background-color: #1ed760;
     background-color: #bbdefb;
     font-family: proxima_nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -39,4 +38,20 @@ h1{
     height: 5em;
     vertical-align: middle;
     
+}
+
+.content{
+    background-color: #bbdefb;
+    font-family: proxima_nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    width: 150px;
+    height: 35px;
 }

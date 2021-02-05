@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import random
 import os
 import spotipy
@@ -14,6 +14,7 @@ sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
 global_artist = ""
 global_track = ""
+global_track_name= ""
 global_genre = ""
 
 @app.route('/')
@@ -43,6 +44,8 @@ def hello_world():
     global global_track
     global_track = track_id
     
+    global global_track_name
+    global_track_name = track_name
     global global_genre
     global_genre = genre
     
@@ -63,8 +66,6 @@ def hello_world():
     
 @app.route('/recommendations')
 def recommendations():
-   
-
     recc= sp.recommendations(seed_artists=[global_artist], seed_genres=[global_genre], seed_tracks=[global_track], limit= 5, country="US")
     recc_songs = {}
     for i in range(5):
@@ -74,7 +75,55 @@ def recommendations():
     return render_template(
         'recommendations.html', 
         recc_songs=recc_songs,
+        global_track_name = global_track_name,
         )
+        
+
+@app.route('/findArtist', methods = ['POST', 'GET'])
+def findArtist():
+    if request.method == 'POST':
+        data = request.form['artist_search']
+
+        temp = sp.search(q=data, type="artist", limit=1)
+        
+        artist = temp['artists']['items'][0]["id"]
+
+        name = sp.artist(artist)['name']
+
+        random_number = random.randint(0,9)
+        track_name = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["name"]
+        track_href=sp.artist_top_tracks(artist, "US")['tracks'][random_number]['external_urls']['spotify']
+        track_id = sp.artist_top_tracks(artist, "US")['tracks'][random_number]['id']
+        
+        artist_pic = sp.artist(artist)["images"][2]['url']
+        
+        prev_url = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["preview_url"]
+        img_url = sp.artist_top_tracks(artist,"US")["tracks"][random_number]["album"]["images"][0]["url"]
+        
+        genre = sp.artist(artist)['genres'][0]
+        
+        global global_artist
+        global_artist = artist
+    
+        global global_track
+        global_track = track_id
+        
+        global global_track_name
+        global_track_name = track_name
+    
+        global global_genre
+        global_genre = genre
+            
+        return render_template(
+            'findArtist.html',
+            name = name,
+            track = track_name,
+            prev_url = prev_url,
+            image=img_url,
+            track_href = track_href,
+            artist_pic = artist_pic
+            )
+    
 
 app.run(
     port = int(os.getenv("PORT", 8080)),
