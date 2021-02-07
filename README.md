@@ -10,10 +10,10 @@ Project 1
 ###### Spotify
 ## Steps to set up this application
 ###### 1. Clone the repository with https://github.com/NJIT-CS490-SP21/project1-trp35.git
-###### 2. run ```python pip install -r requirements.txt ```
+###### 2. run ```pip install -r requirements.txt ```
 ###### 3. Set up Spotify Developer account with https://developer.spotify.com/documentation/web-api/quick-start/
 ###### 4. Once you obtain the proper authorization credentials, create a .env folder within the main directory and export those credentials there.
-###### 5. Run ```python python app.py``` on the Cloud 9 terminal and preview the application. (Or you could view on Heroku, but that was not required for milestone 1, so I will be adding those instructions later) 
+###### 5. Run ```python app.py``` on the Cloud 9 terminal and preview the application. (Or you could view on Heroku, but that was not required for milestone 1, so I will be adding those instructions later) 
 ## a. What are at least 3 technical issues you encountered with your project? How did you fix them?
 ###### 1. While working on deploying my code with Flask, I ran into multiple errors. The first being that once I created my app on Heroku, I was having trouble actually deploying my code on the app. After more research I was able to find this link, https://stackabuse.com/deploying-a-flask-application-to-heroku/. Where it gave more flask related steps to deploying, so from there I was able to successfully deploy my app. The next issue I ran into this was with deploying any changes I made. Using "git push heroku master" was not working and was throwing various errors. After more research, I found a command on stackOverflow "git push heroku HEAD:master" that resolved this issue for me.
 ###### 2. Ran into issue authorizing spotipy while deploying to heroku. I was getting authorization errors when the app was deployed to heroku, but after more research, I learned about config vars in heroku using https://devcenter.heroku.com/articles/config-vars and set them using the Heroku dashboard.
