@@ -2,9 +2,11 @@
 Project 1
 ## a. What are at least 3 technical issues you encountered with your project? How did you fix them?
 ###### 1. While working on deploying my code with Flask, I ran into multiple errors. The first being that once I created my app on Heroku, I was having trouble actually deploying my code on the app. After more research I was able to find this link, https://stackabuse.com/deploying-a-flask-application-to-heroku/. Where it gave more flask related steps to deploying, so from there I was able to successfully deploy my app. The next issue I ran into this was with deploying any changes I made. Using "git push heroku master" was not working and was throwing various errors. After more research, I found a command on stackOverflow "git push heroku HEAD:master" that resolved this issue for me.
-###### 2. Ran into issue authorizing spotipy while deploying to heroku.
+###### 2. Ran into issue authorizing spotipy while deploying to heroku. I was getting authorization errors when the app was deployed to heroku, but after more research, I learned about config vars in heroku and set them using the Heroku dashboard.
 ###### 3. Some songs do not have previews for their songs
-###### 4. Initializing git
+###### 4. Initializing git, when I tried using git on my project, it wouldn't let me use my actual password as the password, so after doing some more research, I learned that to get over this problem, I needed to set a personal auth token on the github access, which provided a token which I used for my pasword instead.
 ## b. What are known problems, if any, with your project? 
-###### Sometimes the Spotify Logo I put in the top left header does not load for some reason. Most of the time it works though, so I am still working on getting that functionality
+###### Sometimes the Spotify Logo I put in the top left header does not load for some reason. Most of the time it works though, so I am still working on getting that functionality. A potential solution that I am going to implement is that I just download the image and keep it locally within one of my directories that way it always loads.
+###### Another known issue is that when you search for an artist and the name does not exist, it throws an error, so something I would do to fix that would be that if there are no results for that artist than I would display my own 404 error page so it looks nicer, and could have more functionality, like just redirecting back to the home page.
 ## c. What would you do to improve your project in the future? 
+###### To improve my project, I would try to include more visuals or graphics as the layout of the website is simple right now. I would also like to reformat the way my similar tracks page looks, as it just lists the 5 songs with hyperlinks without any other graphics. I also think it would be interesting to add the functionality that it always produces a random artist, rather than hard coding a list of my favorite artists.
