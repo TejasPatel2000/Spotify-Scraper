@@ -120,6 +120,15 @@ def findArtist():
     
         global global_genre
         global_genre = genre
+        
+        # Use Genius API to find lyrics 
+        genius_base_url = "http://api.genius.com"
+        headers = {'Authorization': 'Bearer ' + os.getenv('GENIUS_ACCESS_TOKEN')}
+        search_url = genius_base_url + '/search'
+        data = {'q':track_name+ ' ' + name }
+        response= requests.get(search_url, params=data, headers=headers)
+        json = response.json()
+        lyrics_url = json['response']['hits'][0]['result']['url']
             
         return render_template(
             'findArtist.html',
@@ -128,7 +137,8 @@ def findArtist():
             prev_url = prev_url,
             image=img_url,
             track_href = track_href,
-            artist_pic = artist_pic
+            artist_pic = artist_pic,
+            lyrics_url = lyrics_url,
             )
     
 
