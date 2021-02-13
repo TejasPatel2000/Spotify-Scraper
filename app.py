@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import random
+import requests
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -49,10 +50,15 @@ def hello_world():
     global global_genre
     global_genre = genre
     
-    # print(name)
-    # print(track_name)
-    # print(prev_url)
-    # print(img_url)
+    # Use Genius API to find lyrics 
+    genius_base_url = "http://api.genius.com"
+    headers = {'Authorization': 'Bearer ' + os.getenv('GENIUS_ACCESS_TOKEN')}
+    search_url = genius_base_url + '/search'
+    data = {'q':track_name+ ' ' + name }
+    response= requests.get(search_url, params=data, headers=headers)
+    json = response.json()
+    lyrics_url = json['response']['hits'][0]['result']['url']
+    
     return render_template(
         'index.html', 
         name = name,
@@ -60,7 +66,8 @@ def hello_world():
         prev_url = prev_url,
         image=img_url,
         track_href = track_href,
-        artist_pic = artist_pic
+        artist_pic = artist_pic,
+        lyrics_url = lyrics_url,
         )
 
     
