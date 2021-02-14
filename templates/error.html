@@ -6,7 +6,12 @@
     <body>
         <img id="logo" src="/static/spotify_logo.png" />
         <div class="content">
-            <h1>Sorry, it seems like the artist, {{data}} does not exist on the Spotify Database OR have enough tracks on their profile</h1>
+            <h1> Sorry, it appears as though there was an error trying to pull data for the artist, {{data}}</h1>
+            <h2>This could be because of the following reasons:</h2>
+                <h3>The artist does not exist on spotify</h3>
+                <h3>The artist does not have any/enough tracks on Spotify to display</h3>
+                <h3>Their genre was not accessible</h3>
+                
             <img id="gif" src="/static/sorry.gif" />
             <a href = {{ url_for('hello_world') }}>
                 <h2>Click here to go back to the home page!</h2>
