@@ -131,20 +131,26 @@ def findArtist():
                 genius_base_url = "http://api.genius.com"
                 headers = {'Authorization': 'Bearer ' + os.getenv('GENIUS_ACCESS_TOKEN')}
                 search_url = genius_base_url + '/search'
-                data = {'q':track_name+ ' ' + name }
-                response= requests.get(search_url, params=data, headers=headers)
+                search_data = {'q':track_name+ ' ' + name }
+                response= requests.get(search_url, params=search_data, headers=headers)
                 json = response.json()
-                lyrics_url = json['response']['hits'][0]['result']['url']
-                    
-                return render_template(
-                    'findArtist.html',
-                    name = name,
-                    track = track_name,
-                    prev_url = prev_url,
-                    image=img_url,
-                    track_href = track_href,
-                    artist_pic = artist_pic,
-                    lyrics_url = lyrics_url,
+                if len(json['response']['hits']) > 0:
+                    lyrics_url = json['response']['hits'][0]['result']['url']
+                        
+                    return render_template(
+                        'findArtist.html',
+                        name = name,
+                        track = track_name,
+                        prev_url = prev_url,
+                        image=img_url,
+                        track_href = track_href,
+                        artist_pic = artist_pic,
+                        lyrics_url = lyrics_url,
+                        )
+                else:
+                    return render_template(
+                        'error.html',
+                        data=data,
                     )
             else:
                 return render_template(
