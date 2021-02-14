@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href={{ url_for("static", filename="styles.css") }} />
+    </head>
+    <body>
+        <img id="logo" src="/static/spotify_logo.png" />
+        <div class="content">
+            <h1>Sorry, it seems like the artist, {{data}} does not exist on the Spotify Database</h1>
+            <img id="gif" src="/static/sorry.gif" />
+            <a href = {{ url_for('hello_world') }}>
+                <h2>Click here to go back to the home page!</h2>
+            </a>
+        </div>
+    </body>
+</html>

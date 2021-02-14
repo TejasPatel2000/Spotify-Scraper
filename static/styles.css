@@ -55,3 +55,16 @@ input[type=submit] {
     width: 150px;
     height: 35px;
 }
+#gif{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height:45%;
+    width: 45%;
+}
+
+#textbox{
+    height:50%;
+    width: 10%;
+    font-size:14pt;
+}

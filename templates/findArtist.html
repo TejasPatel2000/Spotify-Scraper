@@ -7,7 +7,7 @@
         <img id="logo" src="/static/spotify_logo.png" />
         <div class="content">
             <form action={{ url_for('findArtist') }} method = "POST">
-                <h3>Search for an Artist <input type = "text" name = "artist_search" /></h3>
+                <h2>Search for an Artist <input type = "text" id="textbox" name = "artist_search" /></h2>
                 <p><input type = "submit" value = "Submit" /></p>
             </form>
             <a href={{track_href}} target="_blank" >
@@ -21,11 +21,10 @@
             </audio>
             <br>
             <a href = {{lyrics_url}}>
-                Click here to view song lyrics!
+                <h3>Click here to view song lyrics!</h3>
             </a>
-            <br>
             <a href={{ url_for('recommendations') }} >
-                Click here to view similar songs!
+                <h3>Click here to view similar songs!</h3>
             </a>
         </div>
     </body>
