@@ -89,74 +89,78 @@ def recommendations():
 def findArtist():
     if request.method == 'POST':
         data = request.form['artist_search']
-
-        temp = sp.search(q=data, type="artist", limit=1)
-
-        if (len(temp['artists']['items']))==0:
-            return render_template(
-            'error.html',
-            data=data,
-            )
-        else:
-            artist = temp['artists']['items'][0]["id"]
+        if data != "":
+            temp = sp.search(q=data, type="artist", limit=1)
     
-            name = sp.artist(artist)['name']
- 
-            random_number = random.randint(0,9)
-            if  len(sp.artist_top_tracks(artist, "US")['tracks']) >= 9 and len(sp.artist(artist)['genres']) > 0:
-                track_name = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["name"]
-                track_href=sp.artist_top_tracks(artist, "US")['tracks'][random_number]['external_urls']['spotify']
-                track_id = sp.artist_top_tracks(artist, "US")['tracks'][random_number]['id']
+            if (len(temp['artists']['items']))==0:
+                return render_template(
+                'error.html',
+                data=data,
+                )
+            else:
+                artist = temp['artists']['items'][0]["id"]
+        
+                name = sp.artist(artist)['name']
+     
+                random_number = random.randint(0,9)
+                if  len(sp.artist_top_tracks(artist, "US")['tracks']) >= 9 and len(sp.artist(artist)['genres']) > 0:
+                    track_name = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["name"]
+                    track_href=sp.artist_top_tracks(artist, "US")['tracks'][random_number]['external_urls']['spotify']
+                    track_id = sp.artist_top_tracks(artist, "US")['tracks'][random_number]['id']
+                    
+                    artist_pic = sp.artist(artist)["images"][2]['url']
+                    
+                    prev_url = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["preview_url"]
+                    img_url = sp.artist_top_tracks(artist,"US")["tracks"][random_number]["album"]["images"][0]["url"]
+                    
+                    genre = sp.artist(artist)['genres'][0]
+                    
+                    global global_artist
+                    global_artist = artist
                 
-                artist_pic = sp.artist(artist)["images"][2]['url']
+                    global global_track
+                    global_track = track_id
+                    
+                    global global_track_name
+                    global_track_name = track_name
                 
-                prev_url = sp.artist_top_tracks(artist, "US")['tracks'][random_number]["preview_url"]
-                img_url = sp.artist_top_tracks(artist,"US")["tracks"][random_number]["album"]["images"][0]["url"]
-                
-                genre = sp.artist(artist)['genres'][0]
-                
-                global global_artist
-                global_artist = artist
-            
-                global global_track
-                global_track = track_id
-                
-                global global_track_name
-                global_track_name = track_name
-            
-                global global_genre
-                global_genre = genre
-                
-                # Use Genius API to find lyrics 
-                genius_base_url = "http://api.genius.com"
-                headers = {'Authorization': 'Bearer ' + os.getenv('GENIUS_ACCESS_TOKEN')}
-                search_url = genius_base_url + '/search'
-                search_data = {'q':track_name+ ' ' + name }
-                response= requests.get(search_url, params=search_data, headers=headers)
-                json = response.json()
-                if len(json['response']['hits']) > 0:
-                    lyrics_url = json['response']['hits'][0]['result']['url']
-                        
-                    return render_template(
-                        'findArtist.html',
-                        name = name,
-                        track = track_name,
-                        prev_url = prev_url,
-                        image=img_url,
-                        track_href = track_href,
-                        artist_pic = artist_pic,
-                        lyrics_url = lyrics_url,
+                    global global_genre
+                    global_genre = genre
+                    
+                    # Use Genius API to find lyrics 
+                    genius_base_url = "http://api.genius.com"
+                    headers = {'Authorization': 'Bearer ' + os.getenv('GENIUS_ACCESS_TOKEN')}
+                    search_url = genius_base_url + '/search'
+                    search_data = {'q':track_name+ ' ' + name }
+                    response= requests.get(search_url, params=search_data, headers=headers)
+                    json = response.json()
+                    if len(json['response']['hits']) > 0:
+                        lyrics_url = json['response']['hits'][0]['result']['url']
+                            
+                        return render_template(
+                            'findArtist.html',
+                            name = name,
+                            track = track_name,
+                            prev_url = prev_url,
+                            image=img_url,
+                            track_href = track_href,
+                            artist_pic = artist_pic,
+                            lyrics_url = lyrics_url,
+                            )
+                    else:
+                        return render_template(
+                            'error.html',
+                            data=data,
                         )
                 else:
                     return render_template(
                         'error.html',
                         data=data,
-                    )
-            else:
-                return render_template(
-                    'error.html',
-                    data=data,
-                    )
+                        )
+        else:
+            return render_template(
+                'error.html',
+                data = data)
     
 
 app.run(
