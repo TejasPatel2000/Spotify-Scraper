@@ -1,13 +1,13 @@
 # project1-trp
 Project 1
 ## Technologies Used
-###### Python, HTML, CSS, AWS Cloud 9, Heroku, Github
+##### Python, HTML, CSS, AWS Cloud 9, Heroku, Github
 ## Libraries Used
-###### OS, Random, Spotipy
+##### OS, Random, Spotipy
 ## Frameworks Used
-###### Flask
+##### Flask
 ## APIs Used
-###### Spotify, Genius
+##### Spotify, Genius
 ## Steps to set up this application
 ##### 1. Clone the repository with the following link: https://github.com/NJIT-CS490-SP21/project1-trp35.git
 ##### 2. run ```pip install -r requirements.txt ``` to install all necessary python packages for the application to run properly
