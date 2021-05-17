@@ -1,4 +1,6 @@
 # Spotify Scraper Webapp
+### https://spotify-fire.herokuapp.com/
+### This tool uses the spotify api alongside the genius api to allow users to search for any artist and will show a random song by that artist, as well as a a sample of the song , the lyrics of the song, as well as a hyperlink that will show you similar songs. A user can also click on the image to link to the full song on spotify
 ## Technologies Used
 ##### Python, HTML, CSS, AWS Cloud 9, Heroku, Github
 ## Libraries Used
