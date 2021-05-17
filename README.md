@@ -1,5 +1,4 @@
-# project1-trp
-Project 1
+# Spotify Scraper Webapp
 ## Technologies Used
 ##### Python, HTML, CSS, AWS Cloud 9, Heroku, Github
 ## Libraries Used
